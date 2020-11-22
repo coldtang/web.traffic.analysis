@@ -3,6 +3,8 @@ package com.tang.parser.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 public class UrlParseUtilsTest {
@@ -77,5 +79,14 @@ public class UrlParseUtilsTest {
         Assert.assertEquals("http", info.getScheme());
         Assert.assertEquals("m.baidu.com:8080", info.getDomain());
         Assert.assertEquals("/from=1012637v/pu=sz@1320_480,cuid@_PHful8jS8_MuvtqgaHai_iaHalh8vi20aHda_OD2a8Euv8xga-18_uQvt_Ra2tDA,cua@_a-qi4ujvfg4NE6pI5me6NIy2IgUI2tYAC_uB,cut@5kSYMltqeupciXM9ravjh_h0vCgcuDPWpi3pur_aC,osname@baiduboxapp,ctv@2,cfrom@1012637v,cen@cuid_cua_cut,csrc@app_mainbox_txt,vmgdb@0020100228y/s", info.getPath());
+    }
+
+    @Test
+    public void getQueryParams() {
+        Map<String, String> map = UrlParseUtils.getQueryParams("qf=11-149&pf=&sortStr=&nav=640");
+        Assert.assertEquals(4, map.size());
+        Assert.assertEquals("11-149", map.get("qf"));
+        Assert.assertEquals("640", map.get("nav"));
+        Assert.assertEquals("-", map.get("pf"));
     }
 }
