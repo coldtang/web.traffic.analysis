@@ -14,7 +14,7 @@ import java.util.Locale;
  *
  * @author tang
  */
-public class BaseDataObject {
+public class BaseDataObject implements ParsedDataObject {
     /**
      * 网站的唯一标识
      */
